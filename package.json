@@ -1,0 +1,21 @@
+{
+  "name": "multi-agent-trading",
+  "version": "1.0.0",
+  "description": "Multi-Agent Trading Assistant using free LLMs",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "author": "Rushikesh Karlekar",
+  "license": "MIT",
+  "dependencies": {
+    "@langchain/groq": "^1.0.2",
+    "axios": "^1.13.2",
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.3",
+    "express": "^5.2.1",
+    "langchain": "^1.2.3",
+    "yahoo-finance2": "^3.11.2"
+  }
+}
