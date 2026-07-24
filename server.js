@@ -10,7 +10,9 @@ const app = express();
 app.use(cors({
   origin: (origin, callback) => {
     // Allow requests from localhost on any port
-    if (!origin || origin.startsWith('http://localhost:')) {
+    // if (!origin || origin.startsWith('http://localhost:')) 
+    if (!origin || origin.startsWith('https://multi-agent-trading-1.onrender.com')) 
+      {
       callback(null, true);
     } else {
       callback(new Error('Not allowed by CORS'));
