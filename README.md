@@ -4,7 +4,6 @@
 
 🌐 **Live Demo:** https://multi-agent-trading-1.onrender.com
 
-📂 **GitHub Repository:** https://github.com/rushikeshk24/multi-agent-trading
 
 ---
 
