@@ -1,197 +1,242 @@
-# Multi-Agent Trading Assistant
+# 📈 Multi-Agent Trading Assistant
 
-A sophisticated stock analysis platform that leverages multiple AI agents to provide comprehensive trading insights using free large language models.
+> AI-powered stock analysis platform that combines multiple intelligent agents to generate comprehensive trading insights using real-time market data and Large Language Models.
+
+🌐 **Live Demo:** https://multi-agent-trading-1.onrender.com
+
+📂 **GitHub Repository:** https://github.com/rushikeshk24/multi-agent-trading
+
+---
 
 ## 🚀 Features
 
-- **Multi-Agent Analysis**: Utilizes specialized AI agents for market data, financial metrics, news analysis, sentiment evaluation, and report generation
-- **Real-Time Data**: Fetches live market data from Yahoo Finance API
-- **Sentiment Analysis**: Analyzes news sentiment to gauge market mood
-- **Interactive Dashboard**: Modern React frontend with charts, confidence meters, and detailed reports
-- **Risk Assessment**: Automated risk evaluation based on multiple factors
-- **Confidence Scoring**: AI-powered confidence ratings for trading decisions
+- 🤖 Multi-Agent AI Architecture
+- 📊 Real-Time Stock Market Analysis
+- 💹 Technical Indicators & Price History
+- 📰 Latest News Aggregation
+- 😊 AI-Based Sentiment Analysis
+- 📑 Comprehensive Trading Report
+- ⚠️ Risk Assessment
+- 🎯 Confidence Score
+- 📈 Interactive Dashboard
+- ⚡ Fast LLM Responses using Groq
 
-## 🏗️ Architecture
+---
 
-The system consists of:
+## 🌐 Live Demo
 
-### Backend (Node.js/Express)
-- **Orchestrator**: Coordinates multiple AI agents for parallel processing
-- **Market Agent**: Retrieves real-time stock prices, volume, and technical indicators
-- **Financial Agent**: Analyzes company financial metrics (P/E ratio, market cap, etc.)
-- **News Agent**: Gathers and processes relevant news articles
-- **Sentiment Agent**: Performs sentiment analysis on news content
-- **Report Agent**: Generates comprehensive trading reports using LangChain and Groq LLM
+**Application:** https://multi-agent-trading-1.onrender.com
 
-### Frontend (React/Vite)
-- **Stock Analysis Form**: Input interface for stock symbols
-- **Interactive Charts**: Price history visualization using Recharts
-- **Tabbed Interface**: Organized display of analysis results
-- **Confidence Meter**: Visual representation of AI confidence levels
-- **Report Cards**: Detailed analysis summaries
+Try analyzing stocks like:
 
-## 📋 Prerequisites
+- AAPL
+- TSLA
+- NVDA
+- MSFT
+- GOOGL
+- AMZN
 
-- Node.js (v16 or higher)
-- npm or yarn
-- Groq API key (free at [groq.com](https://groq.com))
+---
 
-## 🛠️ Installation
-
-1. **Clone the repository**
-   ```bash
-   git clone https://github.com/rushikeshk24/multi-agent-trading.git
-   cd multi-agent-trading
-   ```
-
-2. **Install backend dependencies**
-   ```bash
-   npm install
-   ```
-
-3. **Install frontend dependencies**
-   ```bash
-   cd frontend
-   npm install
-   cd ..
-   ```
-
-4. **Set up environment variables**
-   Create a `.env` file in the root directory:
-   ```env
-   GROQ_API_KEY=your_groq_api_key_here
-   ```
-
-## 🚀 Usage
-
-1. **Start the backend server**
-   ```bash
-   npm start
-   ```
-   Server will run on http://localhost:5000
-
-2. **Start the frontend (in a new terminal)**
-   ```bash
-   cd frontend
-   npm run dev
-   ```
-   Frontend will run on http://localhost:5173
-
-3. **Access the application**
-   Open your browser and navigate to http://localhost:5173
-
-4. **Analyze a stock**
-   - Enter a stock symbol (e.g., AAPL, TSLA, GOOGL)
-   - Click "Analyze" to get comprehensive analysis
-   - View results in the interactive dashboard
-
-## 📡 API Endpoints
-
-### GET /analyze/:symbol
-Analyzes a stock symbol and returns comprehensive data.
-
-**Parameters:**
-- `symbol` (string): Stock ticker symbol (e.g., AAPL)
-
-**Response:**
-```json
-{
-  "marketData": {
-    "symbol": "AAPL",
-    "currentPrice": 150.25,
-    "high": 152.00,
-    "low": 148.50,
-    "volume": 45000000,
-    "ma50": 145.30,
-    "ma200": 140.75,
-    "prices": [...]
-  },
-  "financials": {
-    "pe": 28.5,
-    "marketCap": 2500000000000,
-    ...
-  },
-  "news": [...],
-  "sentiment": "Positive",
-  "report": "Comprehensive analysis report...",
-  "confidence": 80,
-  "risk": "Low"
-}
-```
-
-## 📁 Project Structure
+## 🏗️ System Architecture
 
 ```
-multi-agent-trading/
-├── server.js                 # Main Express server
-├── orchestrator.js           # Agent coordination logic
-├── package.json              # Backend dependencies
-├── .env                      # Environment variables (create this)
-├── agents/                   # AI agent implementations
-│   ├── marketAgent.js
-│   ├── financialAgent.js
-│   ├── newsAgent.js
-│   ├── sentimentAgent.js
-│   └── reportAgent.js
-├── config/
-│   └── env.js               # Environment configuration
-├── services/
-│   └── yahooService.js      # Yahoo Finance API integration
-└── frontend/                # React frontend
-    ├── package.json
-    ├── vite.config.js
-    ├── index.html
-    ├── src/
-    │   ├── App.jsx
-    │   ├── api.js
-    │   ├── components/
-    │   │   ├── StockForm.jsx
-    │   │   ├── ReportCard.jsx
-    │   │   ├── PriceChart.jsx
-    │   │   ├── ConfidenceMeter.jsx
-    │   │   └── Tabs.jsx
-    │   └── assets/
-    └── public/
+                User
+                  │
+                  ▼
+        React Frontend (Vite)
+                  │
+                  ▼
+          Express API Server
+                  │
+                  ▼
+      Multi-Agent Orchestrator
+                  │
+ ┌────────┬────────┬─────────┬─────────┐
+ ▼        ▼        ▼         ▼         ▼
+Market  Finance   News   Sentiment  Report
+Agent    Agent    Agent     Agent    Agent
+ │         │        │          │        │
+ └─────────┴────────┴──────────┴────────┘
+                  │
+                  ▼
+             Groq LLM
+                  │
+                  ▼
+        Final Trading Report
 ```
 
-## 🛠️ Technologies Used
+---
 
-### Backend
-- **Node.js**: Runtime environment
-- **Express.js**: Web framework
-- **LangChain**: LLM orchestration framework
-- **Groq**: Fast LLM inference (free tier available)
-- **Yahoo Finance API**: Financial data provider
-- **Axios**: HTTP client
+# 🖥️ Screenshots
+
+> Add screenshots here after deployment.
+
+```
+screenshots/
+
+home.png
+analysis.png
+report.png
+```
+
+Example:
+
+```md
+## Home Page
+
+![Home](screenshots/home.png)
+
+## Analysis Dashboard
+
+![Dashboard](screenshots/dashboard.png)
+
+## AI Report
+
+![Report](screenshots/report.png)
+```
+
+---
+
+## 🛠️ Tech Stack
 
 ### Frontend
-- **React**: UI framework
-- **Vite**: Build tool and dev server
-- **Recharts**: Charting library
-- **Framer Motion**: Animation library
-- **React Icons**: Icon components
-- **Axios**: HTTP client
 
-## 🤝 Contributing
+- React
+- Vite
+- Recharts
+- Framer Motion
+- React Icons
+- Axios
 
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
+### Backend
+
+- Node.js
+- Express.js
+- LangChain
+- Groq API
+- Yahoo Finance API
+- Axios
+
+---
+
+## 📦 Installation
+
+```bash
+git clone https://github.com/rushikeshk24/multi-agent-trading.git
+
+cd multi-agent-trading
+
+npm install
+
+cd frontend
+
+npm install
+```
+
+Create `.env`
+
+```env
+GROQ_API_KEY=YOUR_GROQ_API_KEY
+```
+
+---
+
+## ▶️ Run Locally
+
+Backend
+
+```bash
+npm start
+```
+
+Frontend
+
+```bash
+cd frontend
+npm run dev
+```
+
+---
+
+## 📡 API
+
+### GET
+
+```
+/analyze/:symbol
+```
+
+Example
+
+```
+/analyze/AAPL
+```
+
+Returns
+
+- Market Data
+- Financial Metrics
+- News
+- Sentiment
+- AI Report
+- Confidence
+- Risk Score
+
+---
+
+## 📂 Folder Structure
+
+```
+multi-agent-trading
+│
+├── agents
+├── config
+├── services
+├── frontend
+├── orchestrator.js
+├── server.js
+├── package.json
+└── README.md
+```
+
+---
+
+## 🎯 Future Improvements
+
+- User Authentication
+- Portfolio Management
+- Watchlist
+- Candlestick Charts
+- Multiple LLM Support
+- Historical Performance Analysis
+- Email Reports
+- Export PDF Reports
+
+---
 
 ## 📄 License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+MIT License
+
+---
 
 ## ⚠️ Disclaimer
 
-This application is for educational and informational purposes only. It should not be considered as financial advice. Always do your own research and consult with financial professionals before making investment decisions.
+This project is built for educational purposes and should not be considered financial advice. Always conduct your own research before making investment decisions.
 
-## 🙏 Acknowledgments
+---
 
-- Groq for providing fast LLM inference
-- Yahoo Finance for market data
-- LangChain for AI agent orchestration
-- The open-source community for amazing tools and libraries</content>
-<parameter name="filePath">c:\Users\rushi\Desktop\multi-agent-trading\README.md
+## 👨‍💻 Author
+
+**Rushikesh Karlekar**
+
+- GitHub: https://github.com/rushikeshk24
+- LinkedIn: https://linkedin.com/in/rushikeshkarlekar
+
+![React](https://img.shields.io/badge/React-19-blue?logo=react)
+![Node.js](https://img.shields.io/badge/Node.js-Express-green?logo=node.js)
+![LangChain](https://img.shields.io/badge/LangChain-AI-success)
+![Groq](https://img.shields.io/badge/Groq-LLM-orange)
+![License](https://img.shields.io/badge/License-MIT-blue)
+![Status](https://img.shields.io/badge/Status-Live-success)
